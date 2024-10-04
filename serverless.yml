@@ -1,0 +1,22 @@
+service: security-ml-app
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: eu-north-1
+  deploymentBucket:
+    name: slsdeploy-bucket
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:PutObject
+        - s3:GetObject
+      Resource: arn:aws:s3:::slsdeploy-bucket/*
+
+functions:
+  authenticateUser:
+    handler: auth.authenticate
+    events:
+      - http:
+          path: authenticate
+          method: post
