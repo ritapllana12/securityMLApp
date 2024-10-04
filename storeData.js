@@ -1,4 +1,3 @@
-import bcrypt from 'bcrypt';
 import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
 import { Matrix } from 'ml-matrix';
 import { encryptPassword } from './encryption.js';

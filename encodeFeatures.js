@@ -18,7 +18,7 @@ return [
     data[4],               
     data[5],               
     sessionDuration,       
-    legitFlag,
+    data[7],
     accessMinutes       
 ];
 }

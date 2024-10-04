@@ -134,7 +134,7 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "slsdeploy-bucket",
-                  "S3Key": "serverless/security-ml-app/dev/1727998623600-2024-10-03T23:37:03.600Z/security-ml-app.zip"
+                  "S3Key": "serverless/security-ml-app/dev/1728044669734-2024-10-04T12:24:29.734Z/security-ml-app.zip"
                 },
                 "Handler": "auth.authenticate",
                 "Runtime": "nodejs18.x",
@@ -152,14 +152,14 @@
                 "AuthenticateUserLogGroup"
               ]
             },
-            "AuthenticateUserLambdaVersionUwUPgKsmaVKVDBAXHZ3XGqmHEDs5ggulcMIBkd7PZV8": {
+            "AuthenticateUserLambdaVersionuhDSwIw9jBAYBDMeXbQxAlvEWDEk4vDrJBpTk6BE4I": {
               "Type": "AWS::Lambda::Version",
               "DeletionPolicy": "Retain",
               "Properties": {
                 "FunctionName": {
                   "Ref": "AuthenticateUserLambdaFunction"
                 },
-                "CodeSha256": "KCgStVFvOUssXmB1gm8t3XUIiIpNSONaQZYdwaUXfhY="
+                "CodeSha256": "O7CkpyJhbcs0G1Hh4TG3TJQRkst9UXARG+KWPHAfNHk="
               }
             },
             "ApiGatewayRestApi": {
@@ -235,7 +235,7 @@
                 "AuthenticateUserLambdaPermissionApiGateway"
               ]
             },
-            "ApiGatewayDeployment1727998619306": {
+            "ApiGatewayDeployment1728044665597": {
               "Type": "AWS::ApiGateway::Deployment",
               "Properties": {
                 "RestApiId": {
@@ -295,7 +295,7 @@
             "AuthenticateUserLambdaFunctionQualifiedArn": {
               "Description": "Current Lambda function version",
               "Value": {
-                "Ref": "AuthenticateUserLambdaVersionUwUPgKsmaVKVDBAXHZ3XGqmHEDs5ggulcMIBkd7PZV8"
+                "Ref": "AuthenticateUserLambdaVersionuhDSwIw9jBAYBDMeXbQxAlvEWDEk4vDrJBpTk6BE4I"
               },
               "Export": {
                 "Name": "sls-security-ml-app-dev-AuthenticateUserLambdaFunctionQualifiedArn"
@@ -349,7 +349,7 @@
           "timeout": 6,
           "runtime": "nodejs18.x",
           "vpc": {},
-          "versionLogicalId": "AuthenticateUserLambdaVersionUwUPgKsmaVKVDBAXHZ3XGqmHEDs5ggulcMIBkd7PZV8"
+          "versionLogicalId": "AuthenticateUserLambdaVersionuhDSwIw9jBAYBDMeXbQxAlvEWDEk4vDrJBpTk6BE4I"
         }
       }
     },
@@ -360,7 +360,7 @@
     "options": {},
     "error": null,
     "params": {},
-    "machineId": "901e3449d28a5979c19636d193d8ff46",
+    "machineId": "42ef0263b4d2fdf25cfe6f0e666f0de5",
     "stage": "dev",
     "accessKeyV2": "<REDACTED>",
     "accessKeyV1": "<REDACTED>",
@@ -389,12 +389,12 @@
     "serviceUniqueId": "arn:aws:cloudformation:eu-north-1:536697254807:stack/security-ml-app-dev/769ee9c0-7697-11ef-8500-0e42f37fe83d",
     "serviceProviderAwsCfStackId": "arn:aws:cloudformation:eu-north-1:536697254807:stack/security-ml-app-dev/769ee9c0-7697-11ef-8500-0e42f37fe83d",
     "serviceProviderAwsCfStackCreated": "2024-09-19T14:57:17.517Z",
-    "serviceProviderAwsCfStackUpdated": "2024-10-03T23:37:14.107Z",
+    "serviceProviderAwsCfStackUpdated": "2024-10-04T12:24:38.155Z",
     "serviceProviderAwsCfStackStatus": "UPDATE_COMPLETE",
     "serviceProviderAwsCfStackOutputs": [
       {
         "OutputKey": "AuthenticateUserLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:eu-north-1:536697254807:function:security-ml-app-dev-authenticateUser:9",
+        "OutputValue": "arn:aws:lambda:eu-north-1:536697254807:function:security-ml-app-dev-authenticateUser:20",
         "Description": "Current Lambda function version",
         "ExportName": "sls-security-ml-app-dev-AuthenticateUserLambdaFunctionQualifiedArn"
       },

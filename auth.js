@@ -2,6 +2,8 @@ import AWS from 'aws-sdk';
 import { createAndSaveMatrixToS3 } from './storeData.js';
 import { trainRandomForestModel } from './randomForest.js';
 import { trainLogisticRegressionModel } from './logisticRegression.js';
+import { encryptPassword } from './encryption.js';
+
 
 const s3 = new AWS.S3();
 
@@ -46,6 +48,7 @@ export const authenticate = async (event) => {
   const logisticRegressionScore = extractPredictionScore(logisticRegressionResult);
   let authResult = "";
 
+
   if (randomForestScore !== null && logisticRegressionScore !== null) {
     if (randomForestScore > logisticRegressionScore) {
       authResult = randomForestResult;
@@ -56,9 +59,11 @@ export const authenticate = async (event) => {
     console.log("Nuk u gjetën prediction score të vlefshme në një nga stringjet.");
   }
 
-    const newData = {
+  const encryptedPassword = await encryptPassword(password);
+
+  const newData = {
       userName,
-      password,
+      encryptedPassword,
       os,
       browser,
       newLatitude,
@@ -69,29 +74,29 @@ export const authenticate = async (event) => {
       result: authResult,
     };
 
-    const params = { Bucket: 's3output-bucket', Key: 'auth-log.json' };
-    let currentData;
+  const params = { Bucket: 's3output-bucket', Key: 'auth-log.json' };
+  let currentData;
 
-    try {
-      const data = await s3.getObject(params).promise();
+  try {
+    const data = await s3.getObject(params).promise();
       currentData = JSON.parse(data.Body.toString());
     } catch (error) {
       console.error('Error retrieving S3 data:', error);
       currentData = [];
     }
 
-    currentData.push(newData);
+  currentData.push(newData);
 
-    const putParams = {
+  const putParams = {
       Bucket: 's3output-bucket',
       Key: 'auth-log.json',
       Body: JSON.stringify(currentData),
       ContentType: 'application/json',
-    };
+  };
 
-    await s3.putObject(putParams).promise();
+  await s3.putObject(putParams).promise();
 
-    return {
+  return {
       statusCode: 200,
       body: JSON.stringify({
         message: 'Data saved successfully',
